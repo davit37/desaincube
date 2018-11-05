@@ -15,12 +15,13 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/bower_components/Ionicons/css/ionicons.min.css">
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/bower_components/jvectormap/jquery-jvectormap.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/AdminLTE.min.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/skins/_all-skins.min.css">
-
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/custom.css?=ok">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -63,33 +64,11 @@
 							</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
-								<li class="user-header">
-									<img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-									<p>
-										Alexander Pierce - Web Developer
-										<small>Member since Nov. 2012</small>
-									</p>
-								</li>
-								<!-- Menu Body -->
-								<li class="user-body">
-									<div class="row">
-										<div class="col-xs-4 text-center">
-											<a href="#">Followers</a>
-										</div>
-										<div class="col-xs-4 text-center">
-											<a href="#">Sales</a>
-										</div>
-										<div class="col-xs-4 text-center">
-											<a href="#">Friends</a>
-										</div>
-									</div>
-									<!-- /.row -->
-								</li>
+								
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<a href="<?php echo site_url('admin/change_password/').$this->session->userdata['logged_in']['id']?>" class="btn btn-default btn-flat">Change Password</a>
 									</div>
 									<div class="pull-right">
 										<a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
@@ -107,16 +86,7 @@
 		<aside class="main-sidebar">
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
-				<!-- Sidebar user panel -->
-				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-					</div>
-					<div class="pull-left info">
-						<p><?php echo $this->session->userdata['logged_in']['user_login']?></p>
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-					</div>
-				</div>
+			
 				
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
@@ -130,8 +100,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_post')?>"><i class="fa fa-circle-o"></i> Semua Post</a></li>
-							<li><a href="<?php echo site_url('admin/new_post')?>"><i class="fa fa-circle-o"></i> Tambah Post</a></li>
+							<li><a href="<?php echo site_url('admin/all_post')?>"><i class="fa fa-circle-o"></i> All Post</a></li>
+							<li><a href="<?php echo site_url('admin/new_post')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
 
 						</ul>
 					</li>
@@ -143,8 +113,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_user')?>"><i class="fa fa-circle-o"></i> Semua User</a></li>
-							<li><a href="<?php echo site_url('admin/new_user')?>"><i class="fa fa-circle-o"></i> Tambah User</a></li>
+							<li><a href="<?php echo site_url('admin/all_user')?>"><i class="fa fa-circle-o"></i> All User</a></li>
+							<li><a href="<?php echo site_url('admin/new_user')?>"><i class="fa fa-circle-o"></i> New User</a></li>
 
 						</ul>
 					</li>

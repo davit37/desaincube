@@ -30,6 +30,7 @@ class Madmin extends CI_Model {
 		$this->db->join('dc_category', 'dc_category.id = dc_category_relationships.category_id', 'left');
 		$this->db->order_by('id', 'desc');
 		$this->db->group_by('id', 'desc');
+		
 		return $this->db->get();
 	}
 
@@ -161,8 +162,10 @@ class Madmin extends CI_Model {
 	}
 
 	public function delete_category_relationships($post_id,$category_id){
+		if(!empty($category_id)){
+			$this->db->where('category_id', $category_id);
+		}
 		$this->db->where('post_id', $post_id);
-		$this->db->where('category_id', $category_id);
 		$this->db->delete('dc_category_relationships');
 		if($this->db->affected_rows()>='1'){
 			return true;

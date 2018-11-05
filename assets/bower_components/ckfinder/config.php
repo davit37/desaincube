@@ -22,9 +22,11 @@ ini_set('display_errors', 0);
 
 $config = array();
 
+
+
 /*============================ Enable PHP Connector HERE ==============================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_authentication
-
+$session = $_COOKIE['ci_session'];
 $config['authentication'] = function () {
     return true;
 };

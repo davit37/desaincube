@@ -17,7 +17,7 @@
               <table class="table table-bordered">
                 <thead><tr>
                   <th style="width: 10px">Username</th>
-                  <th>Nama</th>
+                  <th>Name</th>
                   <th>Email</th>
                   <td>Opsi</td>                 
                 </tr>
@@ -51,15 +51,7 @@
               </tbody></table>
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
-            </div>
+           
           </div>
 			<!-- /.box -->
 		</div>

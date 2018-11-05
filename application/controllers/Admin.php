@@ -13,6 +13,7 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->library('pagination');
 		$this->load->model('Madmin');
 
 		$user = ($this->session->userdata['logged_in']['user_login']);
@@ -50,27 +51,42 @@ class Admin extends CI_Controller
 			$data=array(
 				'title' => $this->input->post('title') ,
 				'content'=>$this->input->post('editor1'),
+				'image'=>$this->input->post('image'),
 				'id_user'=>$this->session->userdata['logged_in']['id'],
 				'post_date'=>date("Y-m-d H:i:s")
 
 			);
 
 			$result = $this->Madmin->save_new_post($data);
-			if($result != false){
-				$id_category=$this->input->post('category'); 
-				$data=array();
-				foreach($id_category as $key => $val){
-					$data[]=array(
-						'category_id'=>$_POST['category'][$key],
-						'post_id'=>$result,
-						
-					);
+			$data=null;
+			if(!empty($this->input->post('category'))){
+				if($result != false){
+					$id_category=$this->input->post('category'); 
+					$data=array();
+					foreach($id_category as $key => $val){
+						$data[]=array(
+							'category_id'=>$_POST['category'][$key],
+							'post_id'=>$result,
+							
+						);
+					}
+					
 				}
-				$result=$this->Madmin->save_category_relationships($data);
-				if($result){
-					echo "true";
-				}
+
+
+			}else{
+				$data[]=array(
+					'category_id'=>1,
+					'post_id'=>$result,
+					
+				);
 			}
+
+			$result=$this->Madmin->save_category_relationships($data);
+			if($result){
+				echo "true";
+			}
+			
 			
 		}
 	}
@@ -93,6 +109,7 @@ class Admin extends CI_Controller
 		$data=array(
 			'title' => $this->input->post('title') ,
 			'content'=>$this->input->post('editor1'),
+			'image'=>$this->input->post('image'),
 		
 		);
 
@@ -101,26 +118,35 @@ class Admin extends CI_Controller
 
 		$data=$this->Madmin->check_category($id)->result();
 
-
-		foreach($data as $obj){
-			$category_id=$obj->category_id;
-
-			if ( !in_array($category_id, $this->input->post('category'))){
-				$this->Madmin->delete_category_relationships($id,$category_id);
+		if(!empty($this->input->post('category'))){
+			foreach($data as $obj){
+				$category_id=$obj->category_id;
+	
+				if ( !in_array($category_id, $this->input->post('category'))){
+					$this->Madmin->delete_category_relationships($id,$category_id);
+				}
 			}
-		}
-		foreach($this->input->post('category') as $obj){
-			$str=$obj;
-
-			if ( !in_array($str, array_column($data, 'category_id'))){
-				
-				$data_category[]=array(
-					'category_id'=>$str,
-					'post_id'=>$id,
+			foreach($this->input->post('category') as $obj){
+				$str=$obj;
+	
+				if ( !in_array($str, array_column($data, 'category_id'))){
 					
-				);
+					$data_category[]=array(
+						'category_id'=>$str,
+						'post_id'=>$id,
+						
+					);
+				}
 			}
+		}else{
+			$this->Madmin->delete_category_relationships($id,null);
+			$data_category[]=array(
+				'category_id'=>1,
+				'post_id'=>$id,
+				
+			);
 		}
+		
 
 		if(!empty($data_category)){
 			$result=$this->Madmin->save_category_relationships($data_category);
@@ -136,7 +162,40 @@ class Admin extends CI_Controller
 		
 	}
 	public function all_post(){
-		$data['data']=$this->Madmin->get_all_post()->result();
+		//konfigurasi pagination
+        $config['base_url'] = site_url('admin/all_post'); //site url
+        $config['total_rows'] = $this->db->count_all('dc_post'); //total row
+        $config['per_page'] = 5;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+ 
+        // Membuat Style pagination untuk BootStrap v4
+     	$config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+ 
+        $this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+           
+ 
+        $data['pagination'] = $this->pagination->create_links();
+		$data['data']=$this->Madmin->get_all_post($config["per_page"], $page)->result();
 
 		$this->load->view('admin/all_post',$data);
 	}
@@ -261,6 +320,11 @@ class Admin extends CI_Controller
 			echo json_encode($data);
 		}
 
+	}
+
+	public function change_password($id){
+
+		$this->load->view('admin/change_password');
 	}
 
 	

@@ -7,20 +7,25 @@
 			<div class="box box-info">
 				<div class="box-header">
 					<h3 class="box-title">
-						content
+						Add New Post
 					</h3>
+					<a role="button" href='<?php echo site_url('admin/all_post')?>' id='btn-simpan' class="btn btn-info pull-right">Back</a>
+
+
 			
 				</div>
 				<!-- /.box-header -->
 				<form method="POST" action='<?php echo site_url('admin/save_new_post')?>'> <div class="box-body pad">
 
-					<input class="form-control" type="text" placeholder="Masukan Judul" id="title"><br>
-					<textarea id="editor1" name="editor1" rows="10" cols="80" style="visibility: hidden; display: none;">  </textarea>
+					<input class="form-control" type="text" placeholder="Enter Title" id="title"><br>
+					<textarea id="editor1" name="editor1" rows="10" cols="80" style="visibility: hidden; display: none;">  </textarea><br>
+					<input class="form-control form-upload" type="text" placeholder="Enter Title" id="image">
+					<button type="button" id='btn-upload' class="btn btn-primary">Save</button><br>
 
 			</div>
 
 			<div class="box-footer">
-				<button type="button" id='btn-simpan' class="btn btn-primary">Simpan</button>
+				<button type="button" id='btn-simpan' class="btn btn-primary">Save</button>
 			</div>
 			
 		</div>
@@ -36,7 +41,7 @@
 
 		<div class="box box-info">
 			<div class="box-header">
-				<h3 class="box-title">Kategori</h3>
+				<h3 class="box-title">Category</h3>
 			</div>
 			<div class="box-body">
 				<!-- Color Picker -->
@@ -62,7 +67,7 @@
 					
 				
 						</form>
-					<input type="text" class="form-control " placeholder="masukan nama kategori" id="name_of_category">
+					<input type="text" class="form-control " placeholder="Add New Category" id="name_of_category">
 				</div>
 
 				<!-- /.form group -->
@@ -71,7 +76,7 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-				<button type="button" class="btn btn-primary" id="btn-kategori">Simpan</button>
+				<button type="button" class="btn btn-primary" id="btn-kategori">Save</button>
 			</div>
 		</div>
 		<!-- /.box -->

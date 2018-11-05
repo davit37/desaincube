@@ -61,6 +61,10 @@ class login extends CI_Controller {
 		redirect('login');
 	}
 
+	public function forgot_password(){
+		$this->load->view("login/forgot_password");
+	}
+
 
 }
 

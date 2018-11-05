@@ -5,26 +5,29 @@ $this->load->helper('function');
 
 <section class="content">
 	<div class="row">
-		<div class="col-xs-12">
-		
-			<!-- /.box -->
+	
 
+		<div class="col-xs-12">
 			<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">User</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered">
-                <thead><tr>
-                  <th width='40%'>judul</th>
-                  <th>Penulis</th>
-                  <th>Kategori</th>
-                  <td>Tanggal Terbit</td>                 
+				<div class="box-header">
+          <h3 class="box-title">ALL POST</h3>
+          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/new_post")?>' class="btn btn-info btn-sm pull-Left">Add New</a>
+				</div>
+				<!-- /.box-header -->
+			
+        
+        <div class="box-body">
+              <table id="table_id" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                <th width='40%'>Title</th>
+								<th>Author</th>
+								<th width='15%'>Categories</th>
+                <th>Date</th>
+                <th></th>
                 </tr>
-               
                 </thead>
-              <tbody>
+                <tbody>
                 <?php 
                 foreach($data as $obj){
                   $url=site_url('admin/edit_post/'.$obj->id);    
@@ -49,20 +52,15 @@ $this->load->helper('function');
                         }
 
                 ?>
+                </tbody>
+                
+              </table>
+            </div>
+				<!-- /.box-body -->
+			</div>
+			<!-- /.box -->
 
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
-            </div>
-          </div>
+
 			<!-- /.box -->
 		</div>
 		<!-- /.col -->
