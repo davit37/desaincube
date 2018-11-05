@@ -23,9 +23,13 @@ class Madmin extends CI_Model {
 	public function get_all_post(){
 		$this->db->select('dc_post.*');
 		$this->db->select('dc_users.display_name');
+		$this->db->select('GROUP_CONCAT(dc_category.name SEPARATOR ", ") AS category_name');
 		$this->db->from('dc_post');
 		$this->db->join('dc_users', 'dc_users.id =dc_post.id_user', 'left');
+		$this->db->join('dc_category_relationships', 'dc_post.id = dc_category_relationships.post_id', 'left');
+		$this->db->join('dc_category', 'dc_category.id = dc_category_relationships.category_id', 'left');
 		$this->db->order_by('id', 'desc');
+		$this->db->group_by('id', 'desc');
 		return $this->db->get();
 	}
 

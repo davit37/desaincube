@@ -34,7 +34,7 @@ $this->load->helper('function');
                     <tr>
                         <td>$obj->title</td>
                         <td>$obj->display_name</td>
-                        <td> </td>
+                        <td> $obj->category_name</td>
                         <td>".$waktu." </td>
                     
                         <td>

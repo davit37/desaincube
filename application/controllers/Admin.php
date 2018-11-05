@@ -86,60 +86,54 @@ class Admin extends CI_Controller
 	public function save_edit_post(){
 		$i=0;
 		$data_category;
+		$result =true;
 
-		$this->form_validation->set_rules('title', 'title', 'required');
-        $this->form_validation->set_rules('editor1', 'editor1', 'required');
-
-		if ($this->form_validation->run() == FALSE) {
 		
-			
-		}
-		else {
-			$id=$this->input->post('id');
-			$data=array(
-				'title' => $this->input->post('title') ,
-				'content'=>$this->input->post('editor1'),
-			
-			);
+		$id=$this->input->post('id');
+		$data=array(
+			'title' => $this->input->post('title') ,
+			'content'=>$this->input->post('editor1'),
+		
+		);
 
-			$result = $this->Madmin->save_edit_post($id,$data);
-			if($result){
-
-				$data=$this->Madmin->check_category($id)->result();
+		$this->Madmin->save_edit_post($id,$data);
 
 
-				foreach($data as $obj){
-					$category_id=$obj->category_id;
+		$data=$this->Madmin->check_category($id)->result();
 
-					if ( !in_array($category_id, $this->input->post('category'))){
-						$this->Madmin->delete_category_relationships($id,$category_id);
-					}
-				}
-				foreach($this->input->post('category') as $obj){
-					$str=$obj;
 
-					if ( !in_array($str, array_column($data, 'category_id'))){
-						
-						$data_category[]=array(
-							'category_id'=>$str,
-							'post_id'=>$id,
-							
-						);
-					}
-				}
+		foreach($data as $obj){
+			$category_id=$obj->category_id;
 
-				if(!empty($data_category)){
-					$result=$this->Madmin->save_category_relationships($data_category);
-				}
-
-				
-				if($result){
-					echo "true";
-				}
-				
+			if ( !in_array($category_id, $this->input->post('category'))){
+				$this->Madmin->delete_category_relationships($id,$category_id);
 			}
-			
 		}
+		foreach($this->input->post('category') as $obj){
+			$str=$obj;
+
+			if ( !in_array($str, array_column($data, 'category_id'))){
+				
+				$data_category[]=array(
+					'category_id'=>$str,
+					'post_id'=>$id,
+					
+				);
+			}
+		}
+
+		if(!empty($data_category)){
+			$result=$this->Madmin->save_category_relationships($data_category);
+		}
+
+		
+		if($result){
+			echo "true";
+		}
+				
+			
+			
+		
 	}
 	public function all_post(){
 		$data['data']=$this->Madmin->get_all_post()->result();
