@@ -34,7 +34,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
               </div>
             </form>
           </div>

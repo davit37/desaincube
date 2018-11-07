@@ -11,7 +11,7 @@ $this->load->helper('function');
 			<div class="box">
 				<div class="box-header">
           <h3 class="box-title">ALL POST</h3>
-          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/new_post")?>' class="btn btn-info btn-sm pull-Left">Add New</a>
+          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/new_post/")?>' class="btn btn-info btn-sm pull-Left"><i class='fa  fa-plus'></i> Add New</a>
 				</div>
 				<!-- /.box-header -->
 			

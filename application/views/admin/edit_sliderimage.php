@@ -27,7 +27,7 @@
 
 			<div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog" >
-					<div class="modal-content" style="background-color: rgba(0,0,0,0.0);">
+					<div class="modal-content" style="">
 						<iframe width="900" height="555" frameborder="0" src="<?php echo base_url('assets/')?>filemanager/dialog.php?type=1&field_id=image_link&akey=<?php echo $this->config->item('file_manager_key');?>">
 						</iframe>
 					</div><!-- /.modal-content -->
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="box-footer">
-				<button type="submit" id='btn-simpan' class="btn btn-primary">Save</button>
+				<button type="submit" id='btn-simpan' class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
 				<a class='btn btn-success ' role='button' href='<?php echo site_url('admin/all_slide/'.$data[0]->id_slider)?>'>Cancel</a>
 			</div>
             </form>

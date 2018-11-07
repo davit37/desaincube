@@ -9,16 +9,16 @@
 					<h3 class="box-title">
 						Add New Post
 					</h3>
-					<a role="button" href='<?php echo site_url(' admin/all_post')?>' id='btn-simpan' class="btn btn-info pull-right">Back</a>
+					<a role="button" href='<?php echo site_url('admin/all_post')?>' id='btn-simpan' class="btn btn-info pull-right"><i class='fa fa-mail-reply '></i> Back</a>
 
 
 
 				</div>
 				<!-- /.box-header -->
-				<form method="POST" action='<?php echo site_url(' admin/save_new_post')?>'> <div class="box-body pad">
+				<form method="POST" action='<?php echo site_url('admin/save_new_post')?>'> <div class="box-body pad">
 
 					<input class="form-control" type="text" placeholder="Enter Title" id="title"><br>
-					<textarea id="editor1" name="editor1" rows="10" cols="80" style="visibility: hidden; display: none;"> </textarea> <br>
+					<textarea id="editor1" name="editor1" rows="10" cols="80" style="visibility: hidden; display: none;">  </textarea><br>
 				
 					<div class="input-group">
 					<input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2" name='image' id="image_link">
@@ -36,7 +36,7 @@
 			</div>
 
 			<div class="box-footer">
-				<button type="button" id='btn-simpan' class="btn btn-primary">Save</button>
+				<button type="button" id='btn-simpan' class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
 			</div>
 
 		</div>
@@ -87,7 +87,7 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-				<button type="button" class="btn btn-primary" id="btn-kategori">Save</button>
+				<button type="button" class="btn btn-primary" id="btn-kategori"> <i class="fa fa-check" aria-hidden="true"></i>Save</button>
 			</div>
 		</div>
 		<!-- /.box -->

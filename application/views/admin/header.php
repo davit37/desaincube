@@ -21,7 +21,7 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/skins/_all-skins.min.css">
-	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/custom.css?=ojkk">
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/custom.css?=kljk">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -101,7 +101,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?php echo site_url('admin/all_post')?>"><i class="fa fa-circle-o"></i> All Post</a></li>
-							<li><a href="<?php echo site_url('admin/new_post')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
+							<li><a href="<?php echo site_url('admin/new_post/')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
 
 						</ul>
 					</li>
@@ -132,13 +132,20 @@
 						</ul>
 					</li>
 				
-					<li >
+					<li class="treeview">
 						<a href="<?php echo site_url('admin/settings')?>">
 							<i class="fa  fa-gears "></i> <span>Settings</span>
 							<span class="pull-right-container">
 							
 							</span>
 						</a>
+						<ul class="treeview-menu">
+							<li><a href="<?php echo site_url('admin/all_user')?>"><i class="fa fa-circle-o"></i> All Settings</a></li>
+							<li><a href="<?php echo site_url('admin/settings')?>"><i class="fa fa-circle-o"></i> New Settings</a></li>
+
+						</ul>
+
+						
 						
 					</li>				
 				</ul>

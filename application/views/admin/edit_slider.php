@@ -47,7 +47,7 @@
 						<!-- /.box-body -->
 
 						<div class="box-footer">
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
 							<a class='btn btn-success ' role='button' href='<?php echo site_url('admin/all_slider')?>'>Cancel</a>
 						</div>
 				</form>

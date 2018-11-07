@@ -11,7 +11,7 @@ $this->load->helper('function');
 					<h3 class="box-title">
 						Edit
 					</h3>
-					<a role="button" id='btn-simpan' href='<?php echo site_url('admin/all_post')?>' class="btn btn-info pull-right">Back</a>
+					<a role="button" id='btn-simpan' href='<?php echo site_url('admin/all_post')?>' class="btn btn-info pull-right"><i class='fa fa-mail-reply '></i> Back</a>
 					<!-- tools box -->
 					
 					<!-- /. tools -->
@@ -22,7 +22,7 @@ $this->load->helper('function');
 					<input class="form-control" type="text" placeholder="Enter Title" id="title" value='<?php echo $post[0]->title?>'><br>
 					<textarea id="editor1" name="editor1" rows="10" cols="80" style="visibility: hidden; display: none;"><?php echo $post[0]->content?>  </textarea> <br>
 					<div class="input-group">
-					<input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2" name='image' id="image_link">
+					<input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2" name='image' id="image_link" value='<?php echo $post[0]->image?>'>
 					<span  style="background: #009fff;color: white;" class=" btn btn-primary input-group-addon" role='button' id="basic-addon2" data-toggle="modal" data-target="#myModal"><i class='fa fa-search'></i> Upload</span>
 					</div>
 					<br>
@@ -42,7 +42,7 @@ $this->load->helper('function');
 			</div>
 
 			<div class="box-footer">
-				<button type="button" id='btn-edit' class="btn btn-primary">Save</button>
+				<button type="button" id='btn-edit' class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
 			</div>
 			
 		</div>
@@ -108,7 +108,7 @@ $this->load->helper('function');
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-				<button type="button" class="btn btn-primary" id="btn-kategori">Save</button>
+				<button type="button" class="btn btn-primary" id="btn-kategori"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
 			</div>
 		</div>
 		<!-- /.box -->
