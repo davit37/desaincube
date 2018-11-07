@@ -7,6 +7,7 @@
 <div class="control-sidebar-bg"></div>
 
 </div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -45,6 +46,8 @@
 
 <script>
 	$(document).on('click', '.delete', function () {
+		
+
 		var del_id = $(this).attr("id");
 		var triger = $(this).attr('triger');
 
@@ -57,11 +60,17 @@
 			cancelButtonColor: '#ff7675',
 			confirmButtonText: 'Ya, Hapus!'
 		}).then((result) => {
+			
 			if (result.value) {
-				window.open("<?php echo site_url()?>/admin/"+triger+"/"+ del_id, "_self")
+				$(".content").addClass("disabledContent");
+				$.ajax({
+					url:"<?php echo site_url()?>admin/"+triger+"/"+ del_id,
+					type:"JSON"
+				}).done(function(){
+					location.reload()
+				})
 			}
 		})
-
 
 	});
 
@@ -70,14 +79,18 @@
 
 	if(typeof($('#editor1').val()) != 'undefined'){
 		CKEDITOR.replace('editor1', {
-			height: 250
+			filebrowserBrowseUrl : '<?php echo base_url('assets/')?>filemanager/dialog.php?type=2&editor=ckeditor&akey=<?php echo $this->config->item('file_manager_key');?>',
+			filebrowserUploadUrl : '<?php echo base_url('assets/')?>filemanager/dialog.php?type=2&editor=ckeditor&akey=<?php echo $this->config->item('file_manager_key');?>',
+			filebrowserImageBrowseUrl : '<?php echo base_url('assets/')?>filemanager/dialog.php?type=1&editor=ckeditor&akey=<?php echo $this->config->item('file_manager_key');?>'
 		});
-		CKFinder.setupCKEditor(editor);
+		
 	}
 
 	
 
 	$(document).ready(function () {
+
+	
 
 		function saveCategory() {
 			if ($("#name_of_category").val() == '') {
@@ -109,6 +122,7 @@
 
 		$(document).on('click', '#btn-simpan', function () {
 			$('#btn-simpan').attr("disabled", true);
+			
 			var title = $('#title').val();
 			var editor = CKEDITOR.instances.editor1.getData();
 			var categoryArr = [];
@@ -127,7 +141,7 @@
 					title: title,
 					editor1: editor,
 					category:categoryArr,
-					image:$('#image').val(),
+					image:$('#image_link').val(),
 					id_user: <?php echo $this->session->userdata['logged_in']['id']?>
 				}
 			}).done(function (msg) {
@@ -157,7 +171,7 @@
 					title: title,
 					editor1: editor,
 					category:categoryArr,
-					image:$('#image').val(),
+					image:$('#image_link').val(),
 					id:$('#id-post').val()}
 			}).done(function (msg) {
 

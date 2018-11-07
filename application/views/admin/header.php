@@ -21,7 +21,7 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/skins/_all-skins.min.css">
-	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/custom.css?=ok">
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/custom.css?=ojkk">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -107,6 +107,19 @@
 					</li>
 					<li class="treeview">
 						<a href="#">
+							<i class="fa fa-file-image-o"></i> <span>Slider</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="<?php echo site_url('admin/all_slider')?>"><i class="fa fa-circle-o"></i> All Slider</a></li>
+							<li><a href="<?php echo site_url('admin/new_slider')?>"><i class="fa fa-circle-o"></i> New Slider</a></li>
+
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#">
 							<i class="fa fa-user"></i> <span>Users</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
@@ -119,7 +132,15 @@
 						</ul>
 					</li>
 				
-				
+					<li >
+						<a href="<?php echo site_url('admin/settings')?>">
+							<i class="fa  fa-gears "></i> <span>Settings</span>
+							<span class="pull-right-container">
+							
+							</span>
+						</a>
+						
+					</li>				
 				</ul>
 			</section>
 			<!-- /.sidebar -->

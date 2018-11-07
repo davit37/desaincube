@@ -1,4 +1,6 @@
-<?php include('header.php')?>
+<?php include('header.php');
+$this->load->helper('function');
+?>
 
 
 <section class="content">
@@ -19,8 +21,24 @@
                     <input type="hidden" id="id-post" value='<?php echo $post[0]->id?>'>
 					<input class="form-control" type="text" placeholder="Enter Title" id="title" value='<?php echo $post[0]->title?>'><br>
 					<textarea id="editor1" name="editor1" rows="10" cols="80" style="visibility: hidden; display: none;"><?php echo $post[0]->content?>  </textarea> <br>
-					<input class="form-control form-upload" type="text" placeholder="Enter Title" id="image" value='<?php echo $post[0]->image?>'>
-					<button type="button" id='btn-upload' class="btn btn-primary">upload</button><br>
+					<div class="input-group">
+					<input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2" name='image' id="image_link">
+					<span  style="background: #009fff;color: white;" class=" btn btn-primary input-group-addon" role='button' id="basic-addon2" data-toggle="modal" data-target="#myModal"><i class='fa fa-search'></i> Upload</span>
+					</div>
+					<br>
+
+
+					<div class='col-md-6'>Create At  <strong><?php echo konfersi_waktu($post[0]->create_at)?></strong></div>
+					<div class='col-md-6'>Modify At  <strong><?php echo konfersi_waktu($post[0]->modify_at)?></strong></div>
+			</div>
+
+			<div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<iframe width="900" height="550" frameborder="0" src="<?php echo base_url('assets/')?>filemanager/dialog.php?type=1&field_id=image_link&akey=<?php echo $this->config->item('file_manager_key')?> ">
+						</iframe>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
 			</div>
 
 			<div class="box-footer">

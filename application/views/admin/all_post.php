@@ -31,7 +31,7 @@ $this->load->helper('function');
                 <?php 
                 foreach($data as $obj){
                   $url=site_url('admin/edit_post/'.$obj->id);    
-                  $waktu=konfersi_waktu($obj->post_date);            
+                  $waktu=konfersi_waktu($obj->create_at);            
 
                     echo"
                     <tr>
