@@ -5,10 +5,36 @@ class Slider extends CI_Controller
 
 {
 
-    //slider 
+	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('form_validation');
+		$this->load->library('pagination');
+		$this->load->library('template');
+		$this->load->model('Mslider');
+		
+
+		$user = ($this->session->userdata['logged_in']['user_login']);
+		$login = ($this->session->userdata['logged_in']['loggedin']);
+		$id_user = ($this->session->userdata['logged_in']['id']);
+
+		if($login != true){
+			redirect(site_url('login'));
+		}
+	
+
+	}
+	//slider 
+	
+	public function index(){
+		$data['data']=$this->Mslider->get_all_slider()->result();
+
+		$this->template->load('admin/slider/all_slider',$data);
+	}
 
 	public function new_slider(){
-		$this->load->view('admin/new_slider');
+		$this->template->load('admin/slider/new_slider');
 	}
 
 	public function save_new_slider(){
@@ -26,64 +52,46 @@ class Slider extends CI_Controller
 			
 		);
 
-		$result = $this->Madmin->save_new_slider($data);
+		$result = $this->Mslider->save_new_slider($data);
 
 		if($result){
-			redirect('admin/all_slider');
+			redirect('admin/slider/slider');
 		}
 	}
 
 	public function all_slider(){
-		$data['data']=$this->Madmin->get_all_slider()->result();
-
-		$this->load->view('admin/all_slider',$data);
+		
 	}
 
 	public function all_slide($id){
-		$data['data']=$this->Madmin->get_all_sliderimage($id)->result();
+		$data['data']=$this->Mslider->get_all_sliderimage($id)->result();
 		$data['id']=$id;
-		$this->load->view('admin/all_slide',$data);
+		$this->template->load('admin/slider/all_slide',$data);
 	}
 
 	public function new_slider_image(){
-		$this->load->view('admin/new_slider_image');
+		$this->template->load('admin/slider/new_slider_image');
 	}
 
-	public function save_new_sliderimage(){
-		
-		
-		$data=array(
-			'title'=>$this->input->post('title'),
-			'image'=>$this->input->post('image'),
-			'id_slider'=>$this->input->post('id_slider'),
-			
-			
-		);
-
-		$result = $this->Madmin->save_new_sliderimage($data);
-
-		if($result){
-			redirect('admin/all_slide/'.$this->input->post('id_slider'));
-		}
-	}
+	
 
 	public function delete_slider($id){
 		$data=array(
 			'delete_at' =>date("Y-m-d H:i:s") ,
 			
 		);
-		$result = $this->Madmin->delete_slider($id,$data);
+		$result = $this->Mslider->delete_slider($id,$data);
 
 		if($result){
-			redirect('admin/all_slider');
+			echo "true";
 		}
 	}
 	
 	public function edit_slider($id){
-		$data['data']=$this->Madmin->get_slider($id)->result();
+		$data['data']=$this->Mslider->get_slider($id)->result();
 		
 
-		$this->load->view('admin/edit_slider',$data);
+		$this->template->load('admin/slider/edit_slider',$data);
 	}
 
 	public function save_edit_slider(){
@@ -101,16 +109,16 @@ class Slider extends CI_Controller
 			'modify_at'=>date("Y-m-d H:i:s")
 		);
 
-		$result=$this->Madmin->save_edit_slider($id,$data);
+		$result=$this->Mslider->save_edit_slider($id,$data);
 
 		if($result){
-			redirect('admin/all_slider');
+			redirect('admin/slider/slider');
 		}
 	}
 
 	public function delete_sliderimage($id){
 		
-		$result = $this->Madmin->delete_sliderimage($id);
+		$result = $this->Mslider->delete_sliderimage($id);
 
 		if($result){
 			echo "true";
@@ -118,10 +126,28 @@ class Slider extends CI_Controller
 	}
 
 	public function edit_sliderimage($id){
-		$data['data']=$this->Madmin->get_sliderimage($id)->result();
+		$data['data']=$this->Mslider->get_sliderimage($id)->result();
 		
 
-		$this->load->view('admin/edit_sliderimage',$data);
+		$this->template->load('admin/slider/edit_sliderimage',$data);
+	}
+
+	public function save_new_sliderimage(){
+		
+		
+		$data=array(
+			'title'=>$this->input->post('title'),
+			'image'=>$this->input->post('image'),
+			'id_slider'=>$this->input->post('id_slider'),
+			
+			
+		);
+
+		$result = $this->Mslider->save_new_sliderimage($data);
+
+		if($result){
+			redirect('admin/slider/slider/all_slide/'.$this->input->post('id_slider'));
+		}
 	}
 
 	public function save_edit_sliderimage(){
@@ -133,10 +159,10 @@ class Slider extends CI_Controller
 			'image'=>$this->input->post('image'),
 		);
 
-		$result=$this->Madmin->save_edit_sliderimage($id,$data);
+		$result=$this->Mslider->save_edit_sliderimage($id,$data);
 
 		if($result){
-			redirect('admin/all_slide/'.$this->input->post('id_slider'));
+			redirect('admin/slider/slider/all_slide/'.$this->input->post('id_slider'));
 		}
 	}
 

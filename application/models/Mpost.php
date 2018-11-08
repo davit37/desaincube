@@ -21,8 +21,8 @@ class Mpost extends CI_Model{
 		$this->db->join('dc_users', 'dc_users.id =dc_post.id_user', 'left');
 		$this->db->join('dc_category_relationships', 'dc_post.id = dc_category_relationships.post_id', 'left');
 		$this->db->join('dc_category', 'dc_category.id = dc_category_relationships.category_id', 'left');
-		$this->db->order_by('id', 'desc');
-		$this->db->group_by('id', 'desc');
+		$this->db->order_by('create_at','desc');
+		$this->db->group_by('id');
 		$this->db->where('delete_at', NULL);
 		
 		return $this->db->get();

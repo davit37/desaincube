@@ -65,7 +65,7 @@ $config = array(
 	| without final / (DON'T TOUCH)
 	|
 	*/
-	'base_url' => '../..',
+	'base_url' => '',
 	/*
 	|--------------------------------------------------------------------------
 	| path from base_url to base of upload folder

@@ -1,4 +1,4 @@
-<?php include('header.php');
+<?php 
 $this->load->helper('function');
 ?>
 
@@ -11,7 +11,7 @@ $this->load->helper('function');
 					<h3 class="box-title">
 						Edit
 					</h3>
-					<a role="button" id='btn-simpan' href='<?php echo site_url('admin/all_post')?>' class="btn btn-info pull-right"><i class='fa fa-mail-reply '></i> Back</a>
+					<a role="button" id='btn-simpan' href='<?php echo site_url('admin/post/all_post')?>' class="btn btn-info pull-right"><i class='fa fa-mail-reply '></i> Back</a>
 					<!-- tools box -->
 					
 					<!-- /. tools -->
@@ -118,4 +118,4 @@ $this->load->helper('function');
 	</div>
 	<!-- ./row -->
 </section>
-<?php include('footer.php')?>
+

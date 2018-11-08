@@ -1,4 +1,4 @@
-<?php include('header.php')?>
+
 
 
 <section class="content">
@@ -13,7 +13,7 @@
 
 				</div>
 				<!-- /.box-header -->
-				<form method="POST" action='<?php echo site_url('admin/save_new_sliderimage')?>'> <div class="box-body pad">
+				<form method="POST" action='<?php echo site_url('admin/slider/save_new_sliderimage')?>'> <div class="box-body pad">
 					<input type="hidden" name="id_slider" value="<?php echo $_GET['id']?>">
 					<input class="form-control" type="text" placeholder="Enter Title" name="title"><br>
 
@@ -51,4 +51,3 @@
 	</div>
 	<!-- ./row -->
 </section>
-<?php include('footer.php')?>

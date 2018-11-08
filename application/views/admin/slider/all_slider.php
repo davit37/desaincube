@@ -1,4 +1,4 @@
-<?php include('header.php');
+<?php 
 $this->load->helper('function');
 
 ?>
@@ -11,7 +11,7 @@ $this->load->helper('function');
 			<div class="box">
 				<div class="box-header">
           <h3 class="box-title">ALL POST</h3>
-          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/new_slider")?>' class="btn btn-info btn-sm pull-Left">Add New</a>
+          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/slider/new_slider")?>' class="btn btn-info btn-sm pull-Left">Add New</a>
 				</div>
 				<!-- /.box-header -->
 			
@@ -30,8 +30,8 @@ $this->load->helper('function');
                 <tbody>
                 <?php 
                 foreach($data as $obj){
-                  $url=site_url('admin/edit_slider/'.$obj->id);
-                  $view=site_url('admin/all_slide/'.$obj->id);    
+                  $url=site_url('admin/slider/edit_slider/'.$obj->id);
+                  $view=site_url('admin/slider/all_slide/'.$obj->id);    
                   $waktu=konfersi_waktu($obj->create_at);            
 
                     echo"
@@ -44,7 +44,7 @@ $this->load->helper('function');
                         <td>
                         <a title='view' href='$view'  role='button' class='btn btn-info btn-sm '><i class='fa  fa-eye'></i></a>
 					              <a title='edit Post' href='$url'  role='button' class='btn btn-warning btn-sm editBarang'><i class='fa fa-pencil'></i></a>
-                        <button title='Delete Post' triger='delete_slider' data-toggle='modal' data-target='#edit' id='$obj->id' type='button' class='btn btn-danger btn-sm delete'><i class='fa fa-trash'></i> </button>
+                        <button title='Delete Post' triger='slider/delete_slider' data-toggle='modal' data-target='#edit' id='$obj->id' type='button' class='btn btn-danger btn-sm delete'><i class='fa fa-trash'></i> </button>
 	                    </td>
 
                     </tr>
@@ -70,4 +70,4 @@ $this->load->helper('function');
 </section>
 
 
-<?php include('footer.php')?>
+

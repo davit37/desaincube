@@ -59,7 +59,7 @@
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+								<img src="../../../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 								<span class="hidden-xs"><?php echo $this->session->userdata['logged_in']['user_login']?></span>
 							</a>
 							<ul class="dropdown-menu">
@@ -101,7 +101,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?php echo site_url('admin/post/all_post')?>"><i class="fa fa-circle-o"></i> All Post</a></li>
-							<li><a href="<?php echo site_url('admin/post/new_post/')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
+							<li><a href="<?php echo site_url('admin/post')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
 
 						</ul>
 					</li>
@@ -113,8 +113,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_slider')?>"><i class="fa fa-circle-o"></i> All Slider</a></li>
-							<li><a href="<?php echo site_url('admin/new_slider')?>"><i class="fa fa-circle-o"></i> New Slider</a></li>
+							<li><a href="<?php echo site_url('admin/slider')?>"><i class="fa fa-circle-o"></i> All Slider</a></li>
+							<li><a href="<?php echo site_url('admin/slider/new_slider')?>"><i class="fa fa-circle-o"></i> New Slider</a></li>
 
 						</ul>
 					</li>
@@ -126,8 +126,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_user')?>"><i class="fa fa-circle-o"></i> All User</a></li>
-							<li><a href="<?php echo site_url('admin/new_user')?>"><i class="fa fa-circle-o"></i> New User</a></li>
+							<li><a href="<?php echo site_url('admin/user/all_user')?>"><i class="fa fa-circle-o"></i> All User</a></li>
+							<li><a href="<?php echo site_url('admin/user/new_user')?>"><i class="fa fa-circle-o"></i> New User</a></li>
 
 						</ul>
 					</li>

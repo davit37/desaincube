@@ -1,4 +1,4 @@
-<?php include('header.php')?>
+
 
 
 <section class="content">
@@ -9,7 +9,7 @@
 					<h3 class="box-title">
 						Add New Post
 					</h3>
-					<a role="button" href='<?php echo site_url('admin/all_post')?>' id='btn-simpan' class="btn btn-info pull-right"><i class='fa fa-mail-reply '></i> Back</a>
+					<a role="button" href='<?php echo site_url('admin/post/all_post')?>' id='btn-simpan' class="btn btn-info pull-right"><i class='fa fa-mail-reply '></i> Back</a>
 
 
 
@@ -97,4 +97,4 @@
 	</div>
 	<!-- ./row -->
 </section>
-<?php include('footer.php')?>
+

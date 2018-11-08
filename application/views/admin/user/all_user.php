@@ -1,6 +1,4 @@
-<?php include('header.php');
 
-?>
 
 <section class="content">
 	<div class="row">
@@ -26,7 +24,7 @@
               <tbody>
                 <?php 
                 foreach($data as $obj){
-                  $url=site_url('admin/edit_user/'.$obj->id);                
+                  $url=site_url('admin/user/edit_user/'.$obj->id);                
 
                     echo"
                     <tr>
@@ -36,7 +34,7 @@
                         <td>".$obj->user_email." </td>
                         <td>
 													<a title='edit Post' href='$url'  role='button' class='btn btn-warning btn-sm editBarang'><i class='fa fa-pencil'></i></a>
-                         <button title='Delete User' triger='delete_user'data-toggle='modal' data-target='#edit' id='$obj->id' type='button' class='btn btn-danger btn-sm delete'><i class='fa fa-trash'></i> </button>
+                         <button title='Delete User' triger='user/delete_user'data-toggle='modal' data-target='#edit' id='$obj->id' type='button' class='btn btn-danger btn-sm delete'><i class='fa fa-trash'></i> </button>
 													
 													</td>
 
@@ -61,4 +59,3 @@
 </section>
 
 
-<?php include('footer.php')?>

@@ -1,4 +1,4 @@
-<?php include('header.php');
+<?php 
 $this->load->helper('function');
 
 ?>
@@ -11,7 +11,7 @@ $this->load->helper('function');
 			<div class="box">
 				<div class="box-header">
           <h3 class="box-title"></h3>
-          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/new_slider_image?id=").$id?>' class="btn btn-info btn-sm pull-Left">Add New</a>
+          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/slider/new_slider_image?id=").$id?>' class="btn btn-info btn-sm pull-Left">Add New</a>
 				</div>
 				<!-- /.box-header -->
 			
@@ -30,7 +30,7 @@ $this->load->helper('function');
                 <tbody>
                 <?php 
                 foreach($data as $obj){
-                  $url=site_url('admin/edit_sliderimage/'.$obj->id);
+                  $url=site_url('admin/slider/edit_sliderimage/'.$obj->id);
                 
                     echo"
                     <tr>
@@ -40,7 +40,7 @@ $this->load->helper('function');
                         <td>
                       
 					     <a title='edit Post' href='$url'  role='button' class='btn btn-warning btn-sm editBarang'><i class='fa fa-pencil'></i></a>
-                         <button title='Delete Post' triger='delete_sliderimage' data-toggle='modal' data-target='#edit' id='$obj->id' type='button' class='btn btn-danger btn-sm delete'><i class='fa fa-trash'></i> </button>
+                         <button title='Delete Post' triger='slider/delete_sliderimage' data-toggle='modal' data-target='#edit' id='$obj->id' type='button' class='btn btn-danger btn-sm delete'><i class='fa fa-trash'></i> </button>
 	                    </td>
 
                         
@@ -67,4 +67,4 @@ $this->load->helper('function');
 </section>
 
 
-<?php include('footer.php')?>
+

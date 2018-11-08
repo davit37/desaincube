@@ -1,4 +1,4 @@
-<?php include('header.php');
+<?php 
 $this->load->helper('function');
 
 ?>
@@ -11,7 +11,7 @@ $this->load->helper('function');
 			<div class="box">
 				<div class="box-header">
           <h3 class="box-title">ALL POST</h3>
-          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/post/new_post/")?>' class="btn btn-info btn-sm pull-Left"><i class='fa  fa-plus'></i> Add New</a>
+          <a role="button" style='margin-left:10px' id='btn-simpan' href='<?php echo site_url("admin/post")?>' class="btn btn-info btn-sm pull-Left"><i class='fa  fa-plus'></i> Add New</a>
 				</div>
 				<!-- /.box-header -->
 			
@@ -30,7 +30,7 @@ $this->load->helper('function');
                 <tbody>
                 <?php 
                 foreach($data as $obj){
-                  $url=site_url('admin/post/edit_post/'.$obj->id);    
+                  $url=site_url('admin/post?id='.$obj->id);    
                   $waktu=konfersi_waktu($obj->create_at);            
 
                     echo"
@@ -69,4 +69,3 @@ $this->load->helper('function');
 </section>
 
 
-<?php include('footer.php')?>

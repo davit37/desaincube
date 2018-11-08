@@ -1,4 +1,4 @@
-<?php include('header.php')?>
+
 
 <section class="content">
 	<div class="row">
@@ -11,7 +11,7 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" method="POST" action='<?php echo site_url('admin/save_new_slider')?>'> <div class="box-body">
+				<form role="form" method="POST" action='<?php echo site_url('admin/slider/save_new_slider')?>'> <div class="box-body">
 
 					<div class="form-group">
 						<label for="exampleInputPassword1">Name</label>
@@ -41,7 +41,7 @@
 
 						<div class="box-footer">
 							<button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-							<a class='btn btn-success ' role='button' href='<?php echo site_url('admin/all_slider')?>'>Cancel</a>
+							<a class='btn btn-success ' role='button' href='<?php echo site_url('admin/slider')?>'>Cancel</a>
 						</div>
 				</form>
 			</div>
@@ -61,4 +61,4 @@
 	<!-- /.row -->
 </section>
 
-<?php include('footer.php')?>
+

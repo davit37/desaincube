@@ -36,5 +36,19 @@ class Mcategory extends CI_Model{
 		$this->db->from('dc_category_relationships');
 		$this->db->where('post_id', $id);
 		return $this->db->get();
-    }
+	}
+	
+	public function delete_category_relationships($post_id,$category_id){
+		if(!empty($category_id)){
+			$this->db->where('category_id', $category_id);
+		}
+		$this->db->where('post_id', $post_id);
+		$this->db->delete('dc_category_relationships');
+		if($this->db->affected_rows()>='1'){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

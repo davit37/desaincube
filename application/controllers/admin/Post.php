@@ -4,11 +4,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class Post extends CI_Controller
 
 {
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->library('pagination');
+		$this->load->library('template');
 		$this->load->model('Mpost');
 		$this->load->model('Mcategory');
 
@@ -23,11 +25,34 @@ class Post extends CI_Controller
 
 	}
 
+
 	public	function index()
 	{
-		$data['data']=$this->Mpost->get_all_post()->result();
-		$this->load->view('admin/all_post',$data);
+		$id=$this->input->get('id');
+		if(empty($id)){
+			$data['data']=$this->Mcategory->get_category()->result();
+
+			$this->template->load("admin/post/new_post",$data);
+			
+
+		}else{
+			$data['post']=$this->Mpost->read_post($id)->result();
+			$data['data']=$this->Mcategory->get_category()->result();
+			$data['check_category']=$this->Mcategory->check_category($id)->result();
+			
+			$this->template->load('admin/post/edit_post',$data);
+			
+		}
 	}
+
+	public function all_post(){
+		$data['data']=$this->Mpost->get_all_post()->result();
+		
+
+		$this->template->load('admin/post/all_post',$data);
+	
+	}
+
 
 
 	//save to db
@@ -37,7 +62,7 @@ class Post extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 		
-			$this->load->view('admin/new_post');
+			$this->load->view('admin/post/new_post');
 		}
 		else {
 			$data=array(
@@ -74,7 +99,7 @@ class Post extends CI_Controller
 				);
 			}
 
-			$result=$this->Mcatergory->save_category_relationships($data);
+			$result=$this->Mcategory->save_category_relationships($data);
 			if($result){
 				echo "true";
 			}
@@ -101,14 +126,14 @@ class Post extends CI_Controller
 		$this->Mpost->save_edit_post($id,$data);
 
 
-		$data=$this->Mcatergory->check_category($id)->result();
+		$data=$this->Mcategory->check_category($id)->result();
 
 		if(!empty($this->input->post('category'))){
 			foreach($data as $obj){
 				$category_id=$obj->category_id;
 	
 				if ( !in_array($category_id, $this->input->post('category'))){
-					$this->Mcatergory->delete_category_relationships($id,$category_id);
+					$this->Mcategory->delete_category_relationships($id,$category_id);
 				}
 			}
 			foreach($this->input->post('category') as $obj){
@@ -119,12 +144,12 @@ class Post extends CI_Controller
 					$data_category[]=array(
 						'category_id'=>$str,
 						'post_id'=>$id,
-						
+
 					);
 				}
 			}
 		}else{
-			$this->Mcatergory->delete_category_relationships($id,null);
+			$this->Mcategory->delete_category_relationships($id,null);
 			$data_category[]=array(
 				'category_id'=>1,
 				'post_id'=>$id,
@@ -134,7 +159,7 @@ class Post extends CI_Controller
 		
 
 		if(!empty($data_category)){
-			$result=$this->Mcatergory->save_category_relationships($data_category);
+			$result=$this->Mcategory->save_category_relationships($data_category);
 		}
 
 		
@@ -148,17 +173,27 @@ class Post extends CI_Controller
 	public function new_post(){
 
 		$data['data']=$this->Mcategory->get_category()->result();
-		$this->load->view('admin/new_post',$data);
+		$this->load->view('admin/post/new_post',$data);
+	}
+
+	public function save_new_category(){
+		$data=array(
+			'name'=>$this->input->post('name')
+		);
+		$result = $this->Mcategory->save_new_category($data);
+
+		if($result){
+			$data=$this->Mcategory->get_category()->result();
+
+			echo json_encode($data);
+		}
+
 	}
 
 	
 
 	public function edit_post($id){
-		$data['post']=$this->Mpost->read_post($id)->result();
-		$data['data']=$this->Mcatergory->get_category()->result();
-		$data['check_category']=$this->Mcatergory->check_category($id)->result();
-
-		$this->load->view('admin/edit_post',$data);
+		
 	}
 
 	public function delete_post($id){
@@ -174,5 +209,4 @@ class Post extends CI_Controller
 		}
 	}
 
-	
 }

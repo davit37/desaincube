@@ -69,6 +69,7 @@
 			if (result.value) {
 				$(".content").addClass("disabledContent");
 				$.ajax({
+					method:"GET",
 					url:"<?php echo site_url()?>admin/"+triger+"/"+ del_id,
 					type:"JSON"
 				}).done(function(){
@@ -106,7 +107,7 @@
 			$.ajax({
 				dataType: 'JSON',
 				method: 'POST',
-				url: '<?php echo site_url('admin/save_new_category')?>',
+				url: '<?php echo site_url('admin/post/save_new_category')?>',
 				data: {
 					name: $("#name_of_category").val()
 				}
@@ -141,7 +142,7 @@
 			$.ajax({
 				dataType: "JSON",
 				method: "POST",
-				url: "<?php echo site_url('admin/save_new_post')?>",
+				url: "<?php echo site_url('admin/post/save_new_post')?>",
 				data: {
 					title: title,
 					editor1: editor,
@@ -151,7 +152,7 @@
 				}
 			}).done(function (msg) {
 
-				window.location.href = '<?php echo site_url('admin/all_post')?>';
+				window.location.href = '<?php echo site_url('admin/post/all_post')?>';
 			})
 		})
 
@@ -171,7 +172,7 @@
 			$.ajax({
 				dataType: "JSON",
 				method: "POST",
-				url: "<?php echo site_url('admin/save_edit_post')?>",
+				url: "<?php echo site_url('admin/post/save_edit_post')?>",
 				data: {
 					title: title,
 					editor1: editor,
@@ -180,7 +181,7 @@
 					id:$('#id-post').val()}
 			}).done(function (msg) {
 
-				window.location.href = '<?php echo site_url('admin/all_post')?>';
+				window.location.href = '<?php echo site_url('admin/post/all_post')?>';
 			})
 		})
 
