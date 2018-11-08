@@ -21,7 +21,7 @@
 				
 					<div class="input-group">
 					<input value='<?php echo $data[0]->image?>' type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2" name='image' id="image_link">
-					<span  style="background: #009fff;color: white;" class=" btn btn-primary input-group-addon" role='button' id="basic-addon2" data-toggle="modal" data-target="#myModal">upload</span>
+					<span  style="background: #009fff;color: white;" class=" btn btn-primary input-group-addon" role='button' id="basic-addon2" data-toggle="modal" data-target="#myModal"><i class='fa fa-search'></i> Upload</span>
 					</div>
 			</div>
 
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="box-footer">
-				<button type="submit" id='btn-simpan' class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
 				<a class='btn btn-success ' role='button' href='<?php echo site_url('admin/all_slide/'.$data[0]->id_slider)?>'>Cancel</a>
 			</div>
             </form>

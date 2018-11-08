@@ -17,15 +17,25 @@
 						<div class='row'>
 							<div class="col-md-9">
 								<div class="box-body">
-                                <form role="form" method="POST" action='<?php echo site_url('admin/save_seo')?>'>
-									<div class="form-group">
-										<label for="exampleInputEmail1">Code</label>
-										<input type="text" class="form-control" name='code' placeholder="" >
+								<form role="form" method="POST" action='<?php echo site_url('admin/save_seo')?>'>
+								
+								<?php 
+
+								foreach($seo as $obj){
+									$name=ucwords(implode(" ",explode('_',$obj->code)));
+									echo"
+									<div class='form-group'>
+										<label for='exampleInputEmail1'>$name</label>
+										<input type='hidden' name='id[]' value='$obj->id'>
+										<input type='text' class='form-control' name='value[]' placeholder='' value='$obj->value' >
 									</div>
-									<div class="form-group">
-										<label for="exampleInputPassword1">Value</label>
-										<textarea class="form-control" rows="3" placeholder="" name='value'></textarea>
-									</div>
+									";
+
+								}
+
+								?>
+									
+									
 								
                                     
                                     <div class="box-footer">

@@ -100,8 +100,8 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_post')?>"><i class="fa fa-circle-o"></i> All Post</a></li>
-							<li><a href="<?php echo site_url('admin/new_post/')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
+							<li><a href="<?php echo site_url('admin/post/all_post')?>"><i class="fa fa-circle-o"></i> All Post</a></li>
+							<li><a href="<?php echo site_url('admin/post/new_post/')?>"><i class="fa fa-circle-o"></i> New Post</a></li>
 
 						</ul>
 					</li>
@@ -140,7 +140,7 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_user')?>"><i class="fa fa-circle-o"></i> All Settings</a></li>
+							<li><a href="<?php echo site_url('admin/all_settings')?>"><i class="fa fa-circle-o"></i> All Settings</a></li>
 							<li><a href="<?php echo site_url('admin/settings')?>"><i class="fa fa-circle-o"></i> New Settings</a></li>
 
 						</ul>
