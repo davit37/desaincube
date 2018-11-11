@@ -19,15 +19,22 @@ class Mlogin extends CI_Model {
 			if($query->num_rows() == 1){
 				
 				$data= $query->row();
-		$hash = $data->user_password;
+				$hash = $data->user_password;
 				if (password_verify($akun['user_password'], $hash)) {
-					return $query->result();
+					return 1;
 				}else{
-					return false;
+					return 2;
 				}
 			}
 			else{
-				return false;
+				return 3;
 			}
+	}
+
+	public function get_akun($akun){
+		$this->db->select('*');
+		$this->db->from('dc_users');
+		$this->db->where('user_login', $akun['user_login']);
+		return $this->db->get();
 	}
 }

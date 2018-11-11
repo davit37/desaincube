@@ -37,10 +37,22 @@ class Post extends CI_Controller
 
 		}else{
 			$data['post']=$this->Mpost->read_post($id)->result();
-			$data['data']=$this->Mcategory->get_category()->result();
-			$data['check_category']=$this->Mcategory->check_category($id)->result();
+
+			if(count($data['post']) <=0 ){
+				$url=site_url('admin/post/all_post');
+				echo "
+				<script> 
+				alert('Wrong ID');
+				location.href='$url'
+				</script>
+				";
+			}else{
+				$data['data']=$this->Mcategory->get_category()->result();
+				$data['check_category']=$this->Mcategory->check_category($id)->result();
+				
+				$this->template->load('admin/post/edit_post',$data);
+			}
 			
-			$this->template->load('admin/post/edit_post',$data);
 			
 		}
 	}
@@ -62,7 +74,7 @@ class Post extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 		
-			$this->load->view('admin/post/new_post');
+			$this->template->load('admin/post/new_post');
 		}
 		else {
 			$data=array(
@@ -173,7 +185,7 @@ class Post extends CI_Controller
 	public function new_post(){
 
 		$data['data']=$this->Mcategory->get_category()->result();
-		$this->load->view('admin/post/new_post',$data);
+		$this->template->load('admin/post/new_post',$data);
 	}
 
 	public function save_new_category(){

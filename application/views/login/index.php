@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/custom.css?=kljk">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,15 +35,16 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg"></p>
+  <?php echo validation_errors(); ?>
+
 
     <form method="POST" action='<?php echo site_url('login/check_login')?>''>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="username" name='user_login'>
+        <input type="text" class="form-control" placeholder="username" name='user_login' required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name='user_password'>
+        <input type="password" class="form-control" placeholder="Password" name='user_password' required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

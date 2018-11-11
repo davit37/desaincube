@@ -6,6 +6,7 @@ class login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->library('custom');
 		$this->load->model('Mlogin');
 	}
 
@@ -13,40 +14,63 @@ class login extends CI_Controller {
 	{
 		$this->load->view('login/index');
 	}
+
+	
+
+	
+
+	
+
+	public function check_user(){
+
+		$akun = array(
+			'user_login'	=> $this->input->post('user_login'),
+			'user_password'	=>$this->input->post('user_password')
+		);
+
+		$result = $this->Mlogin->check_akun($akun);
+	
+
+		if($result == 3){
+			$this->form_validation->set_message('check_user', $this->custom->error_message("Username Does Not Exist"));
+			return FALSE;
+		}elseif($result == 2)
+		{
+			$this->form_validation->set_message('check_user', $this->custom->error_message("Wrong Password"));
+			return FALSE;
+		}elseif($result == 1){
+			return TRUE;
+		}
+	}
+
 	public function check_login()
 	{
-		$this->form_validation->set_rules('user_login', 'user_login', 'required');
+		$this->form_validation->set_rules('user_login', 'user_login', 'required|callback_check_user');
 		$this->form_validation->set_rules('user_password', 'user_password', 'required');
 
 		if($this->form_validation->run() == FALSE ){
 			$this->load->view('login/index');
 		}
 		else{
+			
 			$akun = array(
-			'user_login'	=> $this->input->post('user_login'),
-			'user_password'	=>$this->input->post('user_password')
+				'user_login'	=> $this->input->post('user_login'),
+				'user_password'	=>$this->input->post('user_password')
 			);
-
-			$result = $this->Mlogin->check_akun($akun);
-			if($result != false){
+	
+			$result = $this->Mlogin->get_akun($akun)->result();
+			$session_data = array(
+				
+				'user_login'	=> $akun['user_login'],
+				'display_name'	=> $result[0]->display_name,
+				'id'=>$result[0]->id,
+				'loggedin' => true,
+				
+				);
+			$this->session->set_userdata('logged_in', $session_data);
+			redirect('admin');
 
 		
-					$session_data = array(
-						
-						'user_login'	=> $akun['user_login'],
-						'display_name'	=> $result[0]->display_name,
-						'id'=>$result[0]->id,
-						'loggedin' => true,
-						
-						);
-				$this->session->set_userdata('logged_in', $session_data);
-				redirect('admin');
-			}
-			else
-			{
-				$data["error"]="Invalid User Id and Password combination";
-				$this->load->view('login/index',$data);
-			}
 	}
 }
 

@@ -11,6 +11,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
+            
             <form role="form" method="POST" action='<?php echo site_url('admin/user/save_new_user')?>'>
               <div class="box-body">
                 <div class="form-group">

@@ -1,0 +1,98 @@
+// slideshow image
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.jumbotron{
+    background-image: url(/assets/file/tyre-background.png);
+    background-size: cover;
+    height: 150px;
+    width: 100%;
+    margin-top: 70px;
+    transition-property: background-image;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in;
+    transition-delay: 0.3s;
+    -webkit-transition-property: background-image;
+    -webkit-transition-duration: 0.7s;
+    -webkit-transition-timing-function: ease-in;
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-property: background-image;
+    -moz-transition-duration: 0.7s;
+    -moz-transition-timing-function: ease-in;
+    -moz-transition-delay: 0.3s;
+}
+
+.nav-link{
+    color:black !important;
+}
+
+.img-thumbnail{
+    width:100%;
+    height: 140px;
+}
+
+.card-text{
+    margin-top: -10px;
+}
+
+.footer{
+    background-color: #dee2e2;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    padding-top: 20px;
+    
+
+}
+
+.custom-text{
+    font-size: 13px;
+}
+
+// Dekstop Version
+
+@media (min-width: 992px) {
+
+    .jumbotron{
+        height:400px; 
+    }
+
+    .nav-link:hover::after{
+       content: '';
+       display: block;
+       border-bottom: 3px solid rgba(125, 202, 233, 0.692);
+       width: 50%;
+       margin: auto;
+       padding-bottom: 3px;
+       margin-bottom: -8px;
+       border-radius: 200px;
+       text-shadow: 0 1px gray;
+       
+    }
+
+    .nav-link{
+        text-transform: uppercase;
+    }
+    
+    
+    
+    .img-thumbnail{
+      width: 245px;
+      height: 163px;
+    }   
+    
+    .thumb-col{
+        margin-right: 100px;
+    }
+
+    .custom-text{
+        width: 245px;
+        margin-left: -15px;
+        font-size: 14px;
+    }
+    
+    
+ }

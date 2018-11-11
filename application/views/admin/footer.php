@@ -148,7 +148,7 @@
 					editor1: editor,
 					category:categoryArr,
 					image:$('#image_link').val(),
-					id_user: <?php echo $this->session->userdata['logged_in']['id']?>
+					id_user:'<?php echo $this->session->userdata['logged_in']['id']?>',
 				}
 			}).done(function (msg) {
 

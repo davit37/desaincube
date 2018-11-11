@@ -55,7 +55,7 @@ class Slider extends CI_Controller
 		$result = $this->Mslider->save_new_slider($data);
 
 		if($result){
-			redirect('admin/slider/slider');
+			redirect('admin/slider');
 		}
 	}
 
@@ -87,11 +87,37 @@ class Slider extends CI_Controller
 		}
 	}
 	
-	public function edit_slider($id){
-		$data['data']=$this->Mslider->get_slider($id)->result();
+	public function edit_slider($id=null){
+
+		if(empty($id)){
+			$url=site_url('admin/slider');
+			echo "
+			<script> 
+			alert('ID Not Found');
+			location.href='$url'
+			</script>
+			
+			";
+
+		}else{
+			$data['data']=$this->Mslider->get_slider($id)->result();
+			$array_length=count($data['data']);
+			if($array_length <= 0){
+				$url=site_url('admin/slider');
+					echo "
+					<script> 
+					alert('Wrong ID');
+					location.href='$url'
+					</script>
+					";
+			}else{
+				$this->template->load('admin/slider/edit_slider',$data);
+			}
+		}
+		
 		
 
-		$this->template->load('admin/slider/edit_slider',$data);
+		
 	}
 
 	public function save_edit_slider(){
@@ -112,7 +138,7 @@ class Slider extends CI_Controller
 		$result=$this->Mslider->save_edit_slider($id,$data);
 
 		if($result){
-			redirect('admin/slider/slider');
+			redirect('admin/slider');
 		}
 	}
 
@@ -125,11 +151,37 @@ class Slider extends CI_Controller
 		}
 	}
 
-	public function edit_sliderimage($id){
-		$data['data']=$this->Mslider->get_sliderimage($id)->result();
-		
+	public function edit_sliderimage($id=null){
 
-		$this->template->load('admin/slider/edit_sliderimage',$data);
+		if(empty($id)){
+			$url=site_url('admin/slider');
+			echo "
+			<script> 
+			alert('ID Not Found');
+			location.href='$url'
+			</script>
+			
+			";
+
+		}else{
+			$data['data']=$this->Mslider->get_sliderimage($id)->result();
+			$array_length=count($data['data']);
+			if($array_length <= 0){
+				$url=site_url('admin/slider');
+					echo "
+					<script> 
+					alert('Wrong ID');
+					location.href='$url'
+					</script>
+					";
+			}else{
+				$this->template->load('admin/slider/edit_sliderimage',$data);
+			}
+		}
+
+		
+	
+		
 	}
 
 	public function save_new_sliderimage(){
@@ -146,7 +198,7 @@ class Slider extends CI_Controller
 		$result = $this->Mslider->save_new_sliderimage($data);
 
 		if($result){
-			redirect('admin/slider/slider/all_slide/'.$this->input->post('id_slider'));
+			redirect('admin/slider/all_slide/'.$this->input->post('id_slider'));
 		}
 	}
 

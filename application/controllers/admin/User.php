@@ -10,7 +10,7 @@ class User Extends CI_Controller{
 		$this->load->library('form_validation');
         $this->load->library('pagination');
         $this->load->library('template');
-		$this->load->model('Madmin');
+		$this->load->model('Muser');
 
 		$user = ($this->session->userdata['logged_in']['user_login']);
 		$login = ($this->session->userdata['logged_in']['loggedin']);
@@ -54,7 +54,7 @@ class User Extends CI_Controller{
 				
 			);
 
-			$result = $this->Madmin->save_new_user($data);
+			$result = $this->Muser->save_new_user($data);
 
 			if($result){
 				redirect('admin/user/all_user');
@@ -67,15 +67,40 @@ class User Extends CI_Controller{
 
 	public function all_user()
 	{
-		$data['data']=$this->Madmin->get_all_user()->result();
+		$data['data']=$this->Muser->get_all_user()->result();
 
 		$this->template->load('admin/user/all_user',$data);
 	}
 
-	public function edit_user($id){
-		$data['data']=$this->Madmin->get_user($id)->result();
+	public function edit_user($id=null){
+		
+		if(empty($id)){
+			$url=site_url('admin/user/all_user');
+			echo "
+			<script> 
+			alert('ID Not Found');
+			location.href='$url'
+			</script>
+			
+			";
 
-		$this->template->load('admin/user/edit_user',$data);
+		}else{
+			$data['data']=$this->Muser->get_user($id)->result();
+			$array_length=count($data['data']);
+			if($array_length <= 0){
+				$url=site_url('admin/user/all_user');
+					echo "
+					<script> 
+					alert('Wrong ID');
+					location.href='$url'
+					</script>
+					";
+			}else{
+				$this->template->load('admin/user/edit_user',$data);
+			}
+
+		}
+	
 	}
 
 	public function save_edit_user(){
@@ -105,7 +130,7 @@ class User Extends CI_Controller{
 		}
 		
 
-		$result = $this->Madmin->save_edit_user($id,$data);
+		$result = $this->Muser->save_edit_user($id,$data);
 
 		if($result){
 			redirect('admin/user/all_user');
@@ -115,10 +140,10 @@ class User Extends CI_Controller{
 	
 	public function delete_user($id){
 		
-		$result = $this->Madmin->delete_user($id);
+		$result = $this->Muser->delete_user($id);
 
 		if($result){
-			redirect('admin/user/all_user');
+			echo "true";
 		}
 	}
 

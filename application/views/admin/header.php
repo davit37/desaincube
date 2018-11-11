@@ -68,7 +68,7 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="<?php echo site_url('admin/change_password/').$this->session->userdata['logged_in']['id']?>" class="btn btn-default btn-flat">Change Password</a>
+										<a href="<?php echo site_url('admin/user/change_password/').$this->session->userdata['logged_in']['id']?>" class="btn btn-default btn-flat">Change Password</a>
 									</div>
 									<div class="pull-right">
 										<a href="<?php echo site_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
@@ -132,20 +132,14 @@
 						</ul>
 					</li>
 				
-					<li class="treeview">
+					<li >
 						<a href="<?php echo site_url('admin/settings')?>">
 							<i class="fa  fa-gears "></i> <span>Settings</span>
 							<span class="pull-right-container">
 							
 							</span>
 						</a>
-						<ul class="treeview-menu">
-							<li><a href="<?php echo site_url('admin/all_settings')?>"><i class="fa fa-circle-o"></i> All Settings</a></li>
-							<li><a href="<?php echo site_url('admin/settings')?>"><i class="fa fa-circle-o"></i> New Settings</a></li>
-
-						</ul>
-
-						
+												
 						
 					</li>				
 				</ul>
