@@ -17,7 +17,7 @@ class Template Extends CI_Loader{
         //front end
 
         public function load_front($view_file_name,$arr=[]){
-                $this->view('front/header');
+                $this->view('front/header',$arr);
                 $this->view($view_file_name,$arr);
                 $this->view('front/footer');
         }

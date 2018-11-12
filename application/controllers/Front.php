@@ -14,12 +14,13 @@ class Front extends CI_Controller
 		$this->load->model('Mslider');
 		$this->load->model('Mcategory');
 		$this->load->model('Mpost');
+		$this->load->model('Msettings');
 	}
 
 
-	public	function index($slug='home')
+	public	function index()
 	{
-	   
+		$data['logo']=$this->Msettings->get_logo()->result();
 		$data['data']=$this->Mpost->get_all_post()->result();
         $this->template->load_front('front/index',$data);
     }

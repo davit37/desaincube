@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo site_url('assets/front/')?>bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo site_url('assets/front/')?>style/style.css">
-  <link rel="stylesheet" href="<?php echo site_url('assets/front/')?>style/mobile.css">
+  <link rel="stylesheet" href="<?php echo site_url('assets/front/')?>style/desktop.css">
 
   <title>Hello, world!</title>
 </head>
@@ -19,7 +19,7 @@
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand " href="#">Navbar</a>
+      <a class="navbar-brand " href="#"><img class='logo' src="<?php echo $logo[0]->path?>" alt="" srcset=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -15,7 +15,7 @@ body {
   -webkit-transition-duration: 0.7s;
   -webkit-transition-timing-function: ease-in;
   -webkit-transition-delay: 0.3s;
-  -moz-transition-property: background-image;
+  -moz-transition-property: background;
   -moz-transition-duration: 0.7s;
   -moz-transition-timing-function: ease-in;
   -moz-transition-delay: 0.3s; }
@@ -40,34 +40,8 @@ body {
 .custom-text {
   font-size: 13px; }
 
-@media (min-width: 992px) {
-  .jumbotron {
-    height: 400px; }
-
-  .nav-link:hover::after {
-    content: '';
-    display: block;
-    border-bottom: 3px solid rgba(125, 202, 233, 0.692);
-    width: 50%;
-    margin: auto;
-    padding-bottom: 3px;
-    margin-bottom: -8px;
-    border-radius: 200px;
-    text-shadow: 0 1px gray; }
-
-  .nav-link {
-    text-transform: uppercase; }
-
-  .img-thumbnail {
-    width: 245px;
-    height: 163px; }
-
-  .thumb-col {
-    margin-right: 100px; }
-
-  .custom-text {
-    width: 245px;
-    margin-left: -15px;
-    font-size: 14px; } }
+.logo {
+  width: 50px;
+  height: 44px; }
 
 /*# sourceMappingURL=style.css.map */

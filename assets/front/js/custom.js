@@ -21,8 +21,13 @@ function nextShow(){
 
 function startInterval(){
     if(IDsetInterval==0){
-        IDsetInterval=setInterval(nextShow,3000)
+        IDsetInterval=setInterval(nextShow,2500)
     }
+}
+
+function stopInterval(){
+    clearInterval(IDsetInterval);
+    IDsetInterval=0;
 }
 
 $(document).ready(function(){
@@ -38,6 +43,13 @@ $(document).ready(function(){
             'background-image':'url('+arrayImg[0].image+')',
             
         })
+    })
+
+    $(document).on('mouseover','.jumbotron',function(){
+        stopInterval()
+    })
+    $(document).on('mouseout','.jumbotron',function(){
+        startInterval();
     })
     startInterval();
 })
